@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,6 +35,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="xzb-a9-oVJ" kind="show" identifier="operationsMenuSegue" id="euH-ao-So7"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -45,7 +49,47 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0cf-Sh-pmN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-276" y="138"/>
+            <point key="canvasLocation" x="-518" y="139"/>
+        </scene>
+        <!--Tutorial Or Games View Controller-->
+        <scene sceneID="uPj-KZ-HnV">
+            <objects>
+                <viewController id="xzb-a9-oVJ" customClass="TutorialOrGamesViewController" customModule="MathOperationsGames" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EKd-39-CnZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZB4-Ua-IkJ">
+                                <rect key="frame" x="12.5" y="94" width="350" height="168"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorialImg" translatesAutoresizingMaskIntoConstraints="NO" id="Ngk-z8-bHE">
+                                        <rect key="frame" x="0.0" y="0.0" width="161" height="168"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="161" id="4PL-my-Ln3"/>
+                                            <constraint firstAttribute="height" constant="168" id="72Q-gz-zvg"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playImg" translatesAutoresizingMaskIntoConstraints="NO" id="qdu-15-w6v">
+                                        <rect key="frame" x="169" y="0.0" width="181" height="168"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="181" id="5az-cY-J9P"/>
+                                            <constraint firstAttribute="height" constant="187" id="Id3-XY-8L7"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZB4-Ua-IkJ" firstAttribute="centerX" secondItem="lA4-9Q-IwF" secondAttribute="centerX" id="72C-ao-EfB"/>
+                            <constraint firstItem="ZB4-Ua-IkJ" firstAttribute="top" secondItem="lA4-9Q-IwF" secondAttribute="top" constant="30" id="FIf-vp-d0I"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lA4-9Q-IwF"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EXy-We-aAy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="293.60000000000002" y="138.98050974512745"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JJ4-hL-1w5">
@@ -61,7 +105,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nee-V2-7jY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1108" y="124"/>
+            <point key="canvasLocation" x="-1326" y="125"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="playImg" width="96" height="96"/>
+        <image name="tutorialImg" width="75" height="75"/>
+    </resources>
 </document>

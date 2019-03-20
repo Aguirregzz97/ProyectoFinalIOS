@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB1CF87E2242FF5400033D18 /* TutorialOrGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1CF87D2242FF5400033D18 /* TutorialOrGamesViewController.swift */; };
 		FB9042AB2242F1100022832C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9042AA2242F1100022832C /* AppDelegate.swift */; };
 		FB9042B02242F1100022832C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB9042AE2242F1100022832C /* Main.storyboard */; };
 		FB9042B22242F1130022832C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB9042B12242F1130022832C /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB1CF87D2242FF5400033D18 /* TutorialOrGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialOrGamesViewController.swift; sourceTree = "<group>"; };
 		FB9042A72242F1100022832C /* MathOperationsGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathOperationsGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB9042AA2242F1100022832C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB9042AF2242F1100022832C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			children = (
 				FB9042AA2242F1100022832C /* AppDelegate.swift */,
 				FB9042AE2242F1100022832C /* Main.storyboard */,
+				FB1CF87D2242FF5400033D18 /* TutorialOrGamesViewController.swift */,
 				FB9042BE2242F2240022832C /* Operations.swift */,
 				FB9042BC2242F1D90022832C /* OperationsMenuTableViewController.swift */,
 				FB9042B12242F1130022832C /* Assets.xcassets */,
@@ -141,6 +144,7 @@
 				FB9042BF2242F2240022832C /* Operations.swift in Sources */,
 				FB9042BD2242F1D90022832C /* OperationsMenuTableViewController.swift in Sources */,
 				FB9042AB2242F1100022832C /* AppDelegate.swift in Sources */,
+				FB1CF87E2242FF5400033D18 /* TutorialOrGamesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
