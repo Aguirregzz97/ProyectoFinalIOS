@@ -14,10 +14,10 @@ class OperationsMenuTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let sumas = Operations(operationName: "Sumas", operationImage: UIImage(named: "imgSuma")!)
-        let restas = Operations(operationName: "Restas", operationImage: UIImage(named: "imgResta")!)
-        let multiplicacion = Operations(operationName: "Multiplicaciones", operationImage: UIImage(named: "imgMultiplicacion")!)
-        let division = Operations(operationName: "Divisiones", operationImage: UIImage(named: "imgDivision")!)
+        let sumas = Operations(operationName: "Sumas", operationImage: UIImage(named: "imgSuma")!, operationTutorialCode: "WWeXzM_She0")
+        let restas = Operations(operationName: "Restas", operationImage: UIImage(named: "imgResta")!, operationTutorialCode: "0x2IPtSCAB0")
+        let multiplicacion = Operations(operationName: "Multiplicaciones", operationImage: UIImage(named: "imgMultiplicacion")!, operationTutorialCode: "bjWBeLKuNMc")
+        let division = Operations(operationName: "Divisiones", operationImage: UIImage(named: "imgDivision")!, operationTutorialCode: "nr6snNh8kDQ")
         operations += [sumas, restas, multiplicacion, division]
         
         // Uncomment the following line to preserve selection between presentations
@@ -89,6 +89,9 @@ class OperationsMenuTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vistaPlayOrTutorial = segue.destination as! TutorialOrGamesViewController
+        let index = tableView.indexPathForSelectedRow!
+        vistaPlayOrTutorial.currentOperacion = operations[index.row]
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }

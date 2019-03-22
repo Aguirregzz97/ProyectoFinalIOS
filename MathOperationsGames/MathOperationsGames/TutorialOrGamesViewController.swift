@@ -9,22 +9,34 @@
 import UIKit
 
 class TutorialOrGamesViewController: UIViewController {
-
+    
+    var currentOperacion: Operations!
+    @IBOutlet weak var titleOutlet: UILabel!
+    @IBOutlet var tapTutorialOutlet: UITapGestureRecognizer!
+    @IBOutlet weak var imageTutorialOutlet: UIImageView!
+    @IBOutlet weak var imagePlayOutlet: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        imageTutorialOutlet.isUserInteractionEnabled = true
+        imagePlayOutlet.isUserInteractionEnabled = true
+        titleOutlet.text = currentOperacion.operationName
         // Do any additional setup after loading the view.
     }
     
-
-    /*
+    @IBAction func tapTutorialPressed(_ sender: UITapGestureRecognizer) {
+        print("Pressed")
+    }
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vistaTutorial = segue.destination as! TutorialViewController
+        vistaTutorial.currentOperacion = currentOperacion
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }
