@@ -13,6 +13,9 @@ class TutorialOrGamesViewController: UIViewController {
     var currentOperacion: Operations!
     @IBOutlet weak var titleOutlet: UILabel!
     @IBOutlet var tapTutorialOutlet: UITapGestureRecognizer!
+    
+    @IBOutlet var tapPlayOutlet: UITapGestureRecognizer!
+    
     @IBOutlet weak var imageTutorialOutlet: UIImageView!
     @IBOutlet weak var imagePlayOutlet: UIImageView!
     
@@ -28,13 +31,24 @@ class TutorialOrGamesViewController: UIViewController {
         print("Pressed")
     }
     
+    @IBAction func tapPlayPressed(_ sender: UITapGestureRecognizer) {
+        print("Pressed")
+    }
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vistaTutorial = segue.destination as! TutorialViewController
-        vistaTutorial.currentOperacion = currentOperacion
+        
+        if segue.identifier == "segueTutorialIdentifier"{
+            let vistaTutorial = segue.destination as! TutorialViewController
+            vistaTutorial.currentOperacion = currentOperacion
+        }
+        else{
+            let vistaPlay = segue.destination as! GameViewController
+            
+        }
+        
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }

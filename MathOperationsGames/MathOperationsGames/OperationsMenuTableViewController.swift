@@ -14,10 +14,10 @@ class OperationsMenuTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let sumas = Operations(operationName: "Sumas", operationImage: UIImage(named: "imgSuma")!, operationTutorialCode: "WWeXzM_She0")
-        let restas = Operations(operationName: "Restas", operationImage: UIImage(named: "imgResta")!, operationTutorialCode: "0x2IPtSCAB0")
-        let multiplicacion = Operations(operationName: "Multiplicaciones", operationImage: UIImage(named: "imgMultiplicacion")!, operationTutorialCode: "bjWBeLKuNMc")
-        let division = Operations(operationName: "Divisiones", operationImage: UIImage(named: "imgDivision")!, operationTutorialCode: "nr6snNh8kDQ")
+        let sumas = Operations(operationName: "Sumas", operationImage: UIImage(named: "Suma-1")!, operationTutorialCode: "WWeXzM_She0")
+        let restas = Operations(operationName: "Restas", operationImage: UIImage(named: "Resta")!, operationTutorialCode: "0x2IPtSCAB0")
+        let multiplicacion = Operations(operationName: "Multiplicaciones", operationImage: UIImage(named: "Multiplicacion")!, operationTutorialCode: "bjWBeLKuNMc")
+        let division = Operations(operationName: "Divisiones", operationImage: UIImage(named: "Division 2")!, operationTutorialCode: "nr6snNh8kDQ")
         operations += [sumas, restas, multiplicacion, division]
         
         // Uncomment the following line to preserve selection between presentations
