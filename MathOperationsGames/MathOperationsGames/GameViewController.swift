@@ -9,6 +9,8 @@
 import UIKit
 
 class GameViewController: UIViewController {
+    
+    var operacion:String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,13 +20,17 @@ class GameViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "sumaBasicaEjercicio"{
-            let vistaTipoEjercicio = segue.destination as! SumaEjercicioBasicoViewController
+            var vistaTipoEjercicio = segue.destination as! SumaEjercicioBasicoViewController
+            
+            vistaTipoEjercicio.opActual = self.operacion
         }
         else if segue.identifier == "sumaSecuenciaEjercicio"{
             let vistaTipoEjercicio = segue.destination as! SumaEjercicioSecuenciaViewController
         }
         else if segue.identifier == "sumaOrdenaEjercicio"{
-            let vistaTipoEjercicio = segue.destination as! SumaEjercicioOrdenaViewController
+            var vistaTipoEjercicio = segue.destination as! SumaEjercicioOrdenaViewController
+            
+        
         }
         
         

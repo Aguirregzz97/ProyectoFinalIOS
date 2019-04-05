@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		627C557F2247D8FD0060DE59 /* SumaEjercicioBasicoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627C557E2247D8FD0060DE59 /* SumaEjercicioBasicoViewController.swift */; };
+		627C55812247DAB60060DE59 /* SumaEjercicioSecuenciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627C55802247DAB60060DE59 /* SumaEjercicioSecuenciaViewController.swift */; };
+		627C55832247DBBE0060DE59 /* SumaEjercicioOrdenaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627C55822247DBBE0060DE59 /* SumaEjercicioOrdenaViewController.swift */; };
+		627C55852248182F0060DE59 /* FindelJuegoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627C55842248182F0060DE59 /* FindelJuegoViewController.swift */; };
 		FB1CF87E2242FF5400033D18 /* TutorialOrGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1CF87D2242FF5400033D18 /* TutorialOrGamesViewController.swift */; };
 		FB1CF8C62245710600033D18 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1CF8C52245710600033D18 /* TutorialViewController.swift */; };
 		FB9042AB2242F1100022832C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9042AA2242F1100022832C /* AppDelegate.swift */; };
@@ -15,9 +19,14 @@
 		FB9042B52242F1130022832C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB9042B32242F1130022832C /* LaunchScreen.storyboard */; };
 		FB9042BD2242F1D90022832C /* OperationsMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9042BC2242F1D90022832C /* OperationsMenuTableViewController.swift */; };
 		FB9042BF2242F2240022832C /* Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9042BE2242F2240022832C /* Operations.swift */; };
+		FBE55A0722459DFE00E51560 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE55A0622459DFE00E51560 /* GameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		627C557E2247D8FD0060DE59 /* SumaEjercicioBasicoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumaEjercicioBasicoViewController.swift; sourceTree = "<group>"; };
+		627C55802247DAB60060DE59 /* SumaEjercicioSecuenciaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumaEjercicioSecuenciaViewController.swift; sourceTree = "<group>"; };
+		627C55822247DBBE0060DE59 /* SumaEjercicioOrdenaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumaEjercicioOrdenaViewController.swift; sourceTree = "<group>"; };
+		627C55842248182F0060DE59 /* FindelJuegoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindelJuegoViewController.swift; sourceTree = "<group>"; };
 		FB1CF87D2242FF5400033D18 /* TutorialOrGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialOrGamesViewController.swift; sourceTree = "<group>"; };
 		FB1CF8C52245710600033D18 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		FB9042A72242F1100022832C /* MathOperationsGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathOperationsGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,6 +37,7 @@
 		FB9042B62242F1130022832C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB9042BC2242F1D90022832C /* OperationsMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsMenuTableViewController.swift; sourceTree = "<group>"; };
 		FB9042BE2242F2240022832C /* Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operations.swift; sourceTree = "<group>"; };
+		FBE55A0622459DFE00E51560 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,9 +71,14 @@
 			isa = PBXGroup;
 			children = (
 				FB9042AA2242F1100022832C /* AppDelegate.swift */,
+				627C557E2247D8FD0060DE59 /* SumaEjercicioBasicoViewController.swift */,
 				FB9042AE2242F1100022832C /* Main.storyboard */,
+				627C55842248182F0060DE59 /* FindelJuegoViewController.swift */,
+				627C55822247DBBE0060DE59 /* SumaEjercicioOrdenaViewController.swift */,
+				627C55802247DAB60060DE59 /* SumaEjercicioSecuenciaViewController.swift */,
 				FB1CF8C52245710600033D18 /* TutorialViewController.swift */,
 				FB1CF87D2242FF5400033D18 /* TutorialOrGamesViewController.swift */,
+				FBE55A0622459DFE00E51560 /* GameViewController.swift */,
 				FB9042BE2242F2240022832C /* Operations.swift */,
 				FB9042BC2242F1D90022832C /* OperationsMenuTableViewController.swift */,
 				FB9042B12242F1130022832C /* Assets.xcassets */,
@@ -144,11 +159,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				627C557F2247D8FD0060DE59 /* SumaEjercicioBasicoViewController.swift in Sources */,
+				627C55852248182F0060DE59 /* FindelJuegoViewController.swift in Sources */,
 				FB9042BF2242F2240022832C /* Operations.swift in Sources */,
 				FB9042BD2242F1D90022832C /* OperationsMenuTableViewController.swift in Sources */,
 				FB1CF8C62245710600033D18 /* TutorialViewController.swift in Sources */,
 				FB9042AB2242F1100022832C /* AppDelegate.swift in Sources */,
+				FBE55A0722459DFE00E51560 /* GameViewController.swift in Sources */,
 				FB1CF87E2242FF5400033D18 /* TutorialOrGamesViewController.swift in Sources */,
+				627C55832247DBBE0060DE59 /* SumaEjercicioOrdenaViewController.swift in Sources */,
+				627C55812247DAB60060DE59 /* SumaEjercicioSecuenciaViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

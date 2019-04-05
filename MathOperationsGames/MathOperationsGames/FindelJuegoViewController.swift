@@ -20,9 +20,11 @@ class FindelJuegoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        super.viewDidLoad()
+     
+
         lbPuntuacion.text = "Puntos: " + String(puntuacion)
-       lbCorrectas.text = "Preguntas Correctas " + String(preguntasCorrectas) + " / 5"
+       lbCorrectas.text = "Preguntas Correctas " + String(preguntasCorrectas) + " / 6"
         // Do any additional setup after loading the view.
     }
     
@@ -39,9 +41,6 @@ class FindelJuegoViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    
-    
-
     
 
 }

@@ -22,12 +22,14 @@ class SumaEjercicioBasicoViewController: UIViewController {
     var puntos: Int!
     var correctas: Int!
     var totalPreguntas: Int!
+    var randBackground: Int!
     
     var aux : Bool!
     var aux2 : Bool!
     var aux3 : Bool!
     var aux4 : Bool!
     
+    var opActual : String!
     
     @IBOutlet weak var btOpcion1: UIButton!
     @IBOutlet weak var btOpcion2: UIButton!
@@ -36,9 +38,11 @@ class SumaEjercicioBasicoViewController: UIViewController {
     @IBOutlet weak var lbPuntos: UILabel!
     @IBOutlet weak var lbCorrectas: UILabel!
     
+    @IBOutlet weak var lbSigno: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        randBackground = Int.random(in: 1...3)
         totalPreguntas = 0
         puntos = 0
         correctas = 0
@@ -47,14 +51,33 @@ class SumaEjercicioBasicoViewController: UIViewController {
         aux3 = false
         aux4 = false
         random()
+        imgFondo()
+       
+    }
+    
+    func imgFondo(){
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+            if(randBackground == 1){
+        backgroundImage.image = UIImage(named: "pasto")
+            }
+            else if(randBackground == 2){
+               backgroundImage.image = UIImage(named: "escuela")
+            }
+            else if(randBackground == 3){
+                   backgroundImage.image = UIImage(named: "pizarron")
+            }
+        backgroundImage.contentMode =  UIView.ContentMode.scaleAspectFill
+    self.view.insertSubview(backgroundImage, at: 0)
+        
        
     }
     
     
     
     func random (){
-        opA = Int.random(in: 0...50)
-        opB = Int.random(in: 0...50)
+        opA = Int.random(in: 1...50)
+        opB = Int.random(in: 1...50)
         
         lbOp1.text = String(opA)
         lbOp2.text = String(opB)
@@ -64,9 +87,25 @@ class SumaEjercicioBasicoViewController: UIViewController {
         var respFalsa2 : Int!
         var respFalsa3 : Int!
         
-        
-        
-        respuesta = opA + opB
+    
+        if(opActual == "Sumas"){
+            lbSigno.text = "+"
+            respuesta = opA + opB
+            
+        }
+        else if(opActual == "Restas"){
+            lbSigno.text = "-"
+            respuesta = opA - opB
+        }
+        else if(opActual == "Multiplicaciones"){
+            lbSigno.text = "x"
+            respuesta = opA * opB
+        }
+        else if(opActual == "Divisiones"){
+            lbSigno.text = "/"
+            respuesta = opA / opB
+        }
+       
         respFalsa1 = respuesta + 1
         respFalsa2 = respuesta - 1
         respFalsa3 = respuesta + 2
@@ -99,7 +138,7 @@ class SumaEjercicioBasicoViewController: UIViewController {
             btOpcion4.setTitle(String(respuesta), for: .normal)
         }
         lbPuntos.text = String(puntos)
-        lbCorrectas.text = String(correctas) + "/5"
+        lbCorrectas.text = String(correctas) + "/6"
         
         cambiaVistaFinal()
         

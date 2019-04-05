@@ -11,6 +11,8 @@ import UIKit
 class TutorialOrGamesViewController: UIViewController {
     
     var currentOperacion: Operations!
+    
+    var auxOperacion: String!
     @IBOutlet weak var titleOutlet: UILabel!
     @IBOutlet var tapTutorialOutlet: UITapGestureRecognizer!
     
@@ -24,6 +26,8 @@ class TutorialOrGamesViewController: UIViewController {
         imageTutorialOutlet.isUserInteractionEnabled = true
         imagePlayOutlet.isUserInteractionEnabled = true
         titleOutlet.text = currentOperacion.operationName
+        
+        auxOperacion = currentOperacion.operationName
         // Do any additional setup after loading the view.
     }
     
@@ -45,7 +49,12 @@ class TutorialOrGamesViewController: UIViewController {
             vistaTutorial.currentOperacion = currentOperacion
         }
         else{
-            let vistaPlay = segue.destination as! GameViewController
+            var vistaPlay = segue.destination as! GameViewController
+            
+            vistaPlay.operacion = self .auxOperacion
+            
+           
+        
             
         }
         
