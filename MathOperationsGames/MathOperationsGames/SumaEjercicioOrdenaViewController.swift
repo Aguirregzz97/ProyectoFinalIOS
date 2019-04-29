@@ -10,68 +10,94 @@ import UIKit
 
 class SumaEjercicioOrdenaViewController: UIViewController {
     
-    @IBOutlet weak var view1: UIView!
-    @IBOutlet weak var view2: UIView!
-    @IBOutlet weak var view3: UIView!
-    @IBOutlet weak var view4: UIView!
-    @IBOutlet weak var view5: UIView!
-    @IBOutlet weak var lb1Outlet: UILabel!
-    @IBOutlet weak var lb2Outlet: UILabel!
+    @IBOutlet weak var btn0: UIButton!
+    @IBOutlet weak var btn1: UIButton!
+    @IBOutlet weak var btn2: UIButton!
+    @IBOutlet weak var btn3: UIButton!
+    @IBOutlet weak var btn4: UIButton!
     
-    var arrViews = [UIView]()
+    var currentOperacion: Operations!
+    
+    var arrBtns = [UIButton]()
     
     var numSquares: Int!
     
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
+    
+    var directions = [Float]()
+    
+    var speeds = [Float]()
+    
+    var actTimer: Timer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        numSquares = 2
-        let myNewView = UIView(frame: CGRect(x: 0, y: 89, width: screenWidth / 5, height: 80))
-        view1 = myNewView
-        view1.addSubview(lb1Outlet)
-        let myNewView2 = UIView(frame: CGRect(x: 0, y: screenWidth / 5, width: screenWidth / 5, height: 80))
-        view2 = myNewView2
-        view2.addSubview(lb2Outlet)
-        view1.backgroundColor = UIColor.red
-        view2.backgroundColor = UIColor.blue
-        arrViews.append(view1)
-        arrViews.append(view2)
+        actTimer = Timer.scheduledTimer(timeInterval: 0.006, target: self, selector: #selector(act), userInfo: nil, repeats: true)
+        directions = [1, 1, 1, 1, 1]
+        speeds = [Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5)]
+        arrBtns += [btn0, btn1, btn2, btn3, btn4]
         paintViewsInScreen()
         // Do any additional setup after loading the view.
     }
     
-    
-    func generateRandSum() {
-        var num1 = Int.random(in: 1...30)
+    @objc func act () {
+        for btn in arrBtns {
+            if (btn.frame.origin.y >= screenHeight - 80) {
+                directions[btn.tag] = directions[btn.tag] * Float(-1)
+            }
+            if (btn.frame.origin.y <= 80) {
+                directions[btn.tag] = directions[btn.tag] * Float(-1)
+            }
+            if (directions[btn.tag] >= 0) {
+                moveView(btn, speeds[btn.tag] * directions[btn.tag])
+            } else {
+                moveView(btn, speeds[btn.tag] * directions[btn.tag])
+            }
+        }
     }
     
     func paintViewsInScreen() {
-        var numSquare = 1
-        for view in arrViews {
-            self.view.addSubview(view)
-            if (numSquare == 1) {
-                view.frame = CGRect(x: 0, y: 89, width: screenWidth / 5, height: 80)
+        var numBtn = 0
+        for btn in arrBtns {
+            if (numBtn == 0) {
+                btn.frame = CGRect(x: 0, y: 89, width: screenWidth / 5, height: 80)
             }
-            if (numSquare == 2) {
-                view.frame = CGRect(x: screenWidth / 5, y: 0, width: screenWidth / 5, height: 80)
+            if (numBtn == 1) {
+                btn.frame = CGRect(x: (screenWidth / 5), y: 89, width: screenWidth / 5, height: 80)
             }
-            numSquare += 1
+            if (numBtn == 2) {
+                btn.frame = CGRect(x: (screenWidth / 5) * 2, y: 89, width: screenWidth / 5, height: 80)
+            }
+            if (numBtn == 3) {
+                btn.frame = CGRect(x: (screenWidth / 5) * 3, y: 89, width: screenWidth / 5, height: 80)
+            }
+            if (numBtn == 4) {
+                btn.frame = CGRect(x: (screenWidth / 5) * 4, y: 89, width: screenWidth / 5, height: 80)
+            }
+            numBtn += 1
         }
-        moveView(arrViews[0], 2.5)
-        moveView(arrViews[1], 2.8)
     }
     
-    func moveView(_ view: UIView, _ speed: Float) {
-        UIView.animate(withDuration: TimeInterval(speed), delay: 0.0 , options: .curveLinear, animations: {
-            view.frame.origin.y = self.screenHeight
-        }, completion: { (_) in
-            view.frame.origin.y = 0
-            self.moveView(view, speed)
-        })
+    func moveView(_ btn: UIButton, _ speed: Float) {
+        btn.frame.origin.y = btn.frame.origin.y + CGFloat(speed)
+    }
+
+    @IBAction func btn0Pressed(_ sender: Any) {
+        btn0.isHidden = true
     }
     
+    @IBAction func btn1Pressed(_ sender: Any) {
+        btn1.isHidden = true
+    }
+    
+    @IBAction func btn2Pressed(_ sender: Any) {
+        print("yes")
+    }
+    
+    @IBAction func btn4Pressed(_ sender: Any) {
+        print("moving matters")
+    }
     
     /*
     // MARK: - Navigation
