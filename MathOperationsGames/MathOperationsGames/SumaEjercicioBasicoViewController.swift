@@ -25,6 +25,9 @@ class SumaEjercicioBasicoViewController: UIViewController {
     var totalPreguntas: Int!
     var randBackground: Int!
     
+    var currentOperation: Operations!
+    
+    
     var aux : Bool!
     var aux2 : Bool!
     var aux3 : Bool!
@@ -47,6 +50,7 @@ class SumaEjercicioBasicoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        opActual = currentOperation.operationName
         randBackground = Int.random(in: 1...3)
         totalPreguntas = 1
         puntos = 0

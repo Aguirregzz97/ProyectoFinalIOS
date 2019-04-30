@@ -26,7 +26,9 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
     @IBOutlet weak var btRespuesta3: UIButton!
     @IBOutlet weak var btRespuesta4: UIButton!
     
-
+    
+    var currentOperation: Operations!
+    
     var respuesta1 : Int!
     var respFalsa1: Int!
     var respFalsa2: Int!
@@ -52,6 +54,8 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
         super.viewDidLoad()
     
         // Do any additional setup after loading the view.
+        
+        opActual = currentOperation.operationName
         randBackground = Int.random(in: 1...3)
         respFalsa1 = 0
         respFalsa2 = 0
