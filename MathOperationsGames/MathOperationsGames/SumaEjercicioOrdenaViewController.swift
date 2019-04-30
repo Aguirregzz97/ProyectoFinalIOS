@@ -36,6 +36,12 @@ class SumaEjercicioOrdenaViewController: UIViewController {
     var speeds = [Float]()
     
     var actTimer: Timer!
+    
+    var alertCorrectTimer: Timer!
+    
+    var alertCorrect: UIAlertController!
+    
+    var alertIncorrect: UIAlertController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,80 +142,97 @@ class SumaEjercicioOrdenaViewController: UIViewController {
         btn.frame.origin.y = btn.frame.origin.y + CGFloat(speed)
     }
     
-    func dispAlertCorrect() {
-        let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: .alert)
+    func dispAlertIncorrect() {
+        let imageView = UIImageView(frame: CGRect(x: screenWidth / 2 - 120, y: 0, width: 120, height:105))
+        imageView.image = UIImage(named: "incorrecto")
+        alertIncorrect = UIAlertController(title: "", message: nil, preferredStyle: .alert)
+        alertIncorrect.view.addSubview(imageView)
         
-        self.present(alert, animated: true, completion: nil)
-        let tmpTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(dismissAlert), userInfo: nil, repeats: false)
+        self.present(alertIncorrect, animated: true, completion: nil)
+        alertCorrectTimer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(dismissAlert2), userInfo: nil, repeats: false)
+    }
+    
+    func dispAlertCorrect() {
+        let imageView = UIImageView(frame: CGRect(x: screenWidth / 2 - 120, y: 0, width: 120, height:105))
+        imageView.image = UIImage(named: "correcto")
+        alertCorrect = UIAlertController(title: "", message: nil, preferredStyle: .alert)
+        alertCorrect.view.addSubview(imageView)
+        
+        self.present(alertCorrect, animated: true, completion: nil)
+        alertCorrectTimer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(dismissAlert), userInfo: nil, repeats: false)
     }
     
     @objc func dismissAlert() {
-        
+        alertCorrect.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func dismissAlert2() {
+        alertIncorrect.dismiss(animated: true, completion: nil)
     }
 
     @IBAction func btn0Pressed(_ sender: Any) {
         if (tmpResults[0] == tmpResultsSorted[0]) {
-            print("Success")
+            dispAlertCorrect()
             tmpResultsSorted.remove(at: 0)
             btn0.isHidden = true
             if (tmpResultsSorted.count == 0) {
                 print("Finished")
             }
         } else {
-            print ("Le fail")
+            dispAlertIncorrect()
         }
     }
     
     @IBAction func btn1Pressed(_ sender: Any) {
         if (tmpResults[1] == tmpResultsSorted[0]) {
-            print("Success")
+            dispAlertCorrect()
             tmpResultsSorted.remove(at: 0)
             btn1.isHidden = true
             if (tmpResultsSorted.count == 0) {
                 print("Finished")
             }
         } else {
-            print ("Le fail")
+            dispAlertIncorrect()
         }
     }
     
     
     @IBAction func btn2Pressed(_ sender: Any) {
         if (tmpResults[2] == tmpResultsSorted[0]) {
-            print("Success")
+            dispAlertCorrect()
             tmpResultsSorted.remove(at: 0)
             btn2.isHidden = true
             if (tmpResultsSorted.count == 0) {
                 print("Finished")
             }
         } else {
-            print ("Le fail")
+            dispAlertIncorrect()
         }
     }
     
     @IBAction func btn3Pressed(_ sender: Any) {
         if (tmpResults[3] == tmpResultsSorted[0]) {
-            print("Success")
+            dispAlertCorrect()
             tmpResultsSorted.remove(at: 0)
             btn3.isHidden = true
             if (tmpResultsSorted.count == 0) {
                 print("Finished")
             }
         } else {
-            print ("Le fail")
+            dispAlertIncorrect()
         }
     }
     
     @IBAction func btn4Pressed(_ sender: Any) {
         if (tmpResults[4] == tmpResultsSorted[0]) {
-            print("Success")
+            dispAlertCorrect()
             tmpResultsSorted.remove(at: 0)
             btn4.isHidden = true
             if (tmpResultsSorted.count == 0) {
                 print("Finished")
             }
         } else {
-            print ("Le fail")
+            dispAlertIncorrect()
         }
     }
     
