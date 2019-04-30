@@ -660,6 +660,7 @@
         <image name="tutorialImg" width="75" height="75"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="TEl-8j-z2k"/>
         <segue reference="N63-dY-DLZ"/>
         <segue reference="4ll-Ve-2mJ"/>
     </inferredMetricsTieBreakers>
