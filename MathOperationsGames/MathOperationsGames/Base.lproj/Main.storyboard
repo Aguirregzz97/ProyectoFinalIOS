@@ -673,7 +673,6 @@
         <image name="tutorialImg" width="75" height="75"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2Ba-Nj-IN7"/>
         <segue reference="N63-dY-DLZ"/>
         <segue reference="4ll-Ve-2mJ"/>
     </inferredMetricsTieBreakers>

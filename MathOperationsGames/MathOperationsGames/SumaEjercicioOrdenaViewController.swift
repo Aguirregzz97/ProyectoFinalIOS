@@ -37,6 +37,12 @@ class SumaEjercicioOrdenaViewController: UIViewController {
     
     var actTimer: Timer!
     
+    var timePassed: Timer!
+    
+    var timePassedNum: Int!
+    
+    var totalPoints: Int!
+    
     var alertCorrectTimer: Timer!
     
     var alertCorrect: UIAlertController!
@@ -45,10 +51,13 @@ class SumaEjercicioOrdenaViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        timePassedNum = 50
+        totalPoints = 0
         arrBtns += [btn0, btn1, btn2, btn3, btn4]
         let operationName = currentOperacion.operationName
         getOperationsInSquares(operation: operationName)
         actTimer = Timer.scheduledTimer(timeInterval: 0.006, target: self, selector: #selector(act), userInfo: nil, repeats: true)
+        timePassed = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timePassedF), userInfo: nil, repeats: true)
         directions = [1, 1, 1, 1, 1]
         speeds = [Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5)]
         paintViewsInScreen()
@@ -97,6 +106,14 @@ class SumaEjercicioOrdenaViewController: UIViewController {
         default:
             print("Operation name does not exist")
             break
+        }
+    }
+    
+    @objc func timePassedF() {
+        if (timePassedNum == 0) {
+            return
+        } else {
+            timePassedNum -= 1
         }
     }
     
@@ -150,6 +167,7 @@ class SumaEjercicioOrdenaViewController: UIViewController {
         
         self.present(alertIncorrect, animated: true, completion: nil)
         alertCorrectTimer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(dismissAlert2), userInfo: nil, repeats: false)
+        totalPoints -= 10
     }
     
     func dispAlertCorrect() {
@@ -160,6 +178,19 @@ class SumaEjercicioOrdenaViewController: UIViewController {
         
         self.present(alertCorrect, animated: true, completion: nil)
         alertCorrectTimer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(dismissAlert), userInfo: nil, repeats: false)
+        totalPoints += timePassedNum
+    }
+    
+    func dispFinished() {
+        let delay = Timer.scheduledTimer(timeInterval: 0.7, target: self, selector: #selector(dispAlertPoints), userInfo: nil, repeats: false)
+    }
+    
+    @objc func dispAlertPoints() {
+        let genericAlert = UIAlertController(title: "Points: " + String(totalPoints), message: "quiere regresar a juegos?", preferredStyle: .alert)
+        genericAlert.addAction(UIAlertAction(title: "Si", style: .default, handler: {
+            action in self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(genericAlert, animated: true)
     }
     
     @objc func dismissAlert() {
@@ -176,7 +207,7 @@ class SumaEjercicioOrdenaViewController: UIViewController {
             tmpResultsSorted.remove(at: 0)
             btn0.isHidden = true
             if (tmpResultsSorted.count == 0) {
-                print("Finished")
+                dispFinished()
             }
         } else {
             dispAlertIncorrect()
@@ -189,7 +220,7 @@ class SumaEjercicioOrdenaViewController: UIViewController {
             tmpResultsSorted.remove(at: 0)
             btn1.isHidden = true
             if (tmpResultsSorted.count == 0) {
-                print("Finished")
+                dispFinished()
             }
         } else {
             dispAlertIncorrect()
@@ -203,7 +234,7 @@ class SumaEjercicioOrdenaViewController: UIViewController {
             tmpResultsSorted.remove(at: 0)
             btn2.isHidden = true
             if (tmpResultsSorted.count == 0) {
-                print("Finished")
+                dispFinished()
             }
         } else {
             dispAlertIncorrect()
@@ -216,7 +247,7 @@ class SumaEjercicioOrdenaViewController: UIViewController {
             tmpResultsSorted.remove(at: 0)
             btn3.isHidden = true
             if (tmpResultsSorted.count == 0) {
-                print("Finished")
+                dispFinished()
             }
         } else {
             dispAlertIncorrect()
@@ -229,7 +260,7 @@ class SumaEjercicioOrdenaViewController: UIViewController {
             tmpResultsSorted.remove(at: 0)
             btn4.isHidden = true
             if (tmpResultsSorted.count == 0) {
-                print("Finished")
+                dispFinished()
             }
         } else {
             dispAlertIncorrect()
