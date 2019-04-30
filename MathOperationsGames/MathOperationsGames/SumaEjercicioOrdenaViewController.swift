@@ -18,6 +18,12 @@ class SumaEjercicioOrdenaViewController: UIViewController {
     
     var currentOperacion: Operations!
     
+    var tmpResults = [Int]()
+    
+    var tmpResultsSorted = [Int]()
+    
+    var btnOrderClicked = [Int]()
+    
     var arrBtns = [UIButton]()
     
     var numSquares: Int!
@@ -33,12 +39,59 @@ class SumaEjercicioOrdenaViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        arrBtns += [btn0, btn1, btn2, btn3, btn4]
+        let operationName = currentOperacion.operationName
+        getOperationsInSquares(operation: operationName)
         actTimer = Timer.scheduledTimer(timeInterval: 0.006, target: self, selector: #selector(act), userInfo: nil, repeats: true)
         directions = [1, 1, 1, 1, 1]
         speeds = [Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5)]
-        arrBtns += [btn0, btn1, btn2, btn3, btn4]
         paintViewsInScreen()
         // Do any additional setup after loading the view.
+    }
+    
+    func getOperationsInSquares (operation: String) {
+        switch operation {
+        case "Sumas":
+            for i in 0 ... 4 {
+                let firstNum = Int.random(in: 1 ... 25)
+                let secondNum = Int.random(in: 1 ... 25)
+                arrBtns[i].setTitle(String(firstNum) + " + " + String(secondNum), for: .normal)
+                tmpResults.append((firstNum + secondNum))
+            }
+            tmpResultsSorted = tmpResults.sorted()
+            break
+        case "Restas":
+            for i in 0 ... 4 {
+                let firstNum = Int.random(in: 1 ... 12)
+                let secondNum = Int.random(in: 13 ... 42)
+                arrBtns[i].setTitle(String(secondNum) + " - " + String(firstNum), for: .normal)
+                tmpResults.append((secondNum - firstNum))
+            }
+            tmpResultsSorted = tmpResults.sorted()
+            break
+        case "Multiplicaciones":
+            for i in 0 ... 4 {
+                let firstNum = Int.random(in: 1 ... 10)
+                let secondNum = Int.random(in: 1 ... 10)
+                arrBtns[i].setTitle(String(firstNum) + " X " + String(secondNum), for: .normal)
+                tmpResults.append((firstNum * secondNum))
+            }
+            tmpResultsSorted = tmpResults.sorted()
+            break
+        case "Divisiones":
+            for i in 0 ... 4 {
+                let firstNum = Int.random(in: 1 ... 10)
+                let secondNum = firstNum * Int.random(in: 1 ... 10)
+                arrBtns[i].setTitle(String(secondNum) + " ÷ " + String(firstNum), for: .normal)
+                tmpResults.append((secondNum / firstNum))
+            }
+            tmpResultsSorted = tmpResults.sorted()
+
+            break
+        default:
+            print("Operation name does not exist")
+            break
+        }
     }
     
     @objc func act () {
@@ -82,21 +135,82 @@ class SumaEjercicioOrdenaViewController: UIViewController {
     func moveView(_ btn: UIButton, _ speed: Float) {
         btn.frame.origin.y = btn.frame.origin.y + CGFloat(speed)
     }
+    
+    func dispAlertCorrect() {
+        let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: .alert)
+        
+        self.present(alert, animated: true, completion: nil)
+        let tmpTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(dismissAlert), userInfo: nil, repeats: false)
+    }
+    
+    @objc func dismissAlert() {
+        
+    }
 
     @IBAction func btn0Pressed(_ sender: Any) {
-        btn0.isHidden = true
+        if (tmpResults[0] == tmpResultsSorted[0]) {
+            print("Success")
+            tmpResultsSorted.remove(at: 0)
+            btn0.isHidden = true
+            if (tmpResultsSorted.count == 0) {
+                print("Finished")
+            }
+        } else {
+            print ("Le fail")
+        }
     }
     
     @IBAction func btn1Pressed(_ sender: Any) {
-        btn1.isHidden = true
+        if (tmpResults[1] == tmpResultsSorted[0]) {
+            print("Success")
+            tmpResultsSorted.remove(at: 0)
+            btn1.isHidden = true
+            if (tmpResultsSorted.count == 0) {
+                print("Finished")
+            }
+        } else {
+            print ("Le fail")
+        }
     }
     
+    
     @IBAction func btn2Pressed(_ sender: Any) {
-        print("yes")
+        if (tmpResults[2] == tmpResultsSorted[0]) {
+            print("Success")
+            tmpResultsSorted.remove(at: 0)
+            btn2.isHidden = true
+            if (tmpResultsSorted.count == 0) {
+                print("Finished")
+            }
+        } else {
+            print ("Le fail")
+        }
+    }
+    
+    @IBAction func btn3Pressed(_ sender: Any) {
+        if (tmpResults[3] == tmpResultsSorted[0]) {
+            print("Success")
+            tmpResultsSorted.remove(at: 0)
+            btn3.isHidden = true
+            if (tmpResultsSorted.count == 0) {
+                print("Finished")
+            }
+        } else {
+            print ("Le fail")
+        }
     }
     
     @IBAction func btn4Pressed(_ sender: Any) {
-        print("moving matters")
+        if (tmpResults[4] == tmpResultsSorted[0]) {
+            print("Success")
+            tmpResultsSorted.remove(at: 0)
+            btn4.isHidden = true
+            if (tmpResultsSorted.count == 0) {
+                print("Finished")
+            }
+        } else {
+            print ("Le fail")
+        }
     }
     
     /*
