@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		626C8E922259D87200ACE6E1 /* error.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 626C8E912259D87200ACE6E1 /* error.mp3 */; };
+		626C8E942259D87E00ACE6E1 /* acierto.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 626C8E932259D87E00ACE6E1 /* acierto.mp3 */; };
 		627C557F2247D8FD0060DE59 /* SumaEjercicioBasicoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627C557E2247D8FD0060DE59 /* SumaEjercicioBasicoViewController.swift */; };
 		627C55812247DAB60060DE59 /* SumaEjercicioSecuenciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627C55802247DAB60060DE59 /* SumaEjercicioSecuenciaViewController.swift */; };
 		627C55832247DBBE0060DE59 /* SumaEjercicioOrdenaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627C55822247DBBE0060DE59 /* SumaEjercicioOrdenaViewController.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		626C8E912259D87200ACE6E1 /* error.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = error.mp3; sourceTree = "<group>"; };
+		626C8E932259D87E00ACE6E1 /* acierto.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = acierto.mp3; sourceTree = "<group>"; };
 		627C557E2247D8FD0060DE59 /* SumaEjercicioBasicoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumaEjercicioBasicoViewController.swift; sourceTree = "<group>"; };
 		627C55802247DAB60060DE59 /* SumaEjercicioSecuenciaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumaEjercicioSecuenciaViewController.swift; sourceTree = "<group>"; };
 		627C55822247DBBE0060DE59 /* SumaEjercicioOrdenaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumaEjercicioOrdenaViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +80,8 @@
 				627C55842248182F0060DE59 /* FindelJuegoViewController.swift */,
 				627C55822247DBBE0060DE59 /* SumaEjercicioOrdenaViewController.swift */,
 				627C55802247DAB60060DE59 /* SumaEjercicioSecuenciaViewController.swift */,
+				626C8E912259D87200ACE6E1 /* error.mp3 */,
+				626C8E932259D87E00ACE6E1 /* acierto.mp3 */,
 				FB1CF8C52245710600033D18 /* TutorialViewController.swift */,
 				FB1CF87D2242FF5400033D18 /* TutorialOrGamesViewController.swift */,
 				FBE55A0622459DFE00E51560 /* GameViewController.swift */,
@@ -147,6 +153,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB9042B52242F1130022832C /* LaunchScreen.storyboard in Resources */,
+				626C8E942259D87E00ACE6E1 /* acierto.mp3 in Resources */,
+				626C8E922259D87200ACE6E1 /* error.mp3 in Resources */,
 				FB9042B22242F1130022832C /* Assets.xcassets in Resources */,
 				FB9042B02242F1100022832C /* Main.storyboard in Resources */,
 			);

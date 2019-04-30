@@ -26,6 +26,8 @@ class GameViewController: UIViewController {
         }
         else if segue.identifier == "sumaSecuenciaEjercicio"{
             let vistaTipoEjercicio = segue.destination as! SumaEjercicioSecuenciaViewController
+            
+             vistaTipoEjercicio.opActual = self.operacion
         }
         else if segue.identifier == "sumaOrdenaEjercicio"{
             var vistaTipoEjercicio = segue.destination as! SumaEjercicioOrdenaViewController

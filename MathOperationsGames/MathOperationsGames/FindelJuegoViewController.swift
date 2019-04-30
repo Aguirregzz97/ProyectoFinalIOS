@@ -16,16 +16,25 @@ class FindelJuegoViewController: UIViewController {
     
     var puntuacion : Int!
     var preguntasCorrectas : Int!
+    
+    var datosJuegos1: Bool!
+    var datosJuegos2: Bool!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        super.viewDidLoad()
+       
      
-
+        if(datosJuegos1){
         lbPuntuacion.text = "Puntos: " + String(puntuacion)
-       lbCorrectas.text = "Preguntas Correctas " + String(preguntasCorrectas) + " / 6"
+       lbCorrectas.text = "Preguntas Correctas " + String(preguntasCorrectas) + " / 5"
         // Do any additional setup after loading the view.
+        }
+        else if (datosJuegos2){
+             lbPuntuacion.text = "Puntos: " + String(puntuacion)
+            preguntasCorrectas = 0
+                  lbCorrectas.text = ""
+        }
     }
     
 

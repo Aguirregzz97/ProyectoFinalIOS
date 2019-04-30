@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SumaEjercicioBasicoViewController: UIViewController {
 
@@ -31,6 +32,10 @@ class SumaEjercicioBasicoViewController: UIViewController {
     
     var opActual : String!
     
+    var sonido1 = try? AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: Bundle.main.path(forResource: "acierto",ofType:"mp3")!) as URL)
+    
+    var sonido2 = try? AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: Bundle.main.path(forResource: "error",ofType:"mp3")!) as URL)
+    
     @IBOutlet weak var btOpcion1: UIButton!
     @IBOutlet weak var btOpcion2: UIButton!
     @IBOutlet weak var btOpcion3: UIButton!
@@ -43,7 +48,7 @@ class SumaEjercicioBasicoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         randBackground = Int.random(in: 1...3)
-        totalPreguntas = 0
+        totalPreguntas = 1
         puntos = 0
         correctas = 0
         aux = false
@@ -76,11 +81,52 @@ class SumaEjercicioBasicoViewController: UIViewController {
     
     
     func random (){
-        opA = Int.random(in: 1...50)
-        opB = Int.random(in: 1...50)
+        var aux:Int!
+        if(opActual == "Multiplicaciones"){
+            
+            opA = Int.random(in: 1...20)
+            opB = Int.random(in: 1...20)
+            
+            if(opA < opB){
+                aux = opA
+                opA = opB
+                opB = aux
+            }
+        }
+        else if(opActual == "Divisiones") {
+            
+            opA = Int.random(in: 1...10)
+            opB = Int.random(in: 1...10)
         
-        lbOp1.text = String(opA)
-        lbOp2.text = String(opB)
+            
+            if(opA < opB){
+                aux = opA
+                opA = opB
+                opB = aux
+            }
+        }
+        else{
+            opA = Int.random(in: 1...50)
+            opB = Int.random(in: 1...50)
+            if(opActual == "Restas"||opActual == "Sumas"  ){
+                if(opA < opB){
+                    aux = opA
+                    opA = opB
+                    opB = aux
+                }
+            }
+            
+            
+        }
+        if(opB < 10){
+            lbOp1.text = String(opA)
+            lbOp2.text = "  " + String(opB)
+        }
+        else{
+            lbOp1.text = String(opA)
+            lbOp2.text = String(opB)
+        }
+
         
         var respuesta : Int!
         var respFalsa1 : Int!
@@ -138,7 +184,7 @@ class SumaEjercicioBasicoViewController: UIViewController {
             btOpcion4.setTitle(String(respuesta), for: .normal)
         }
         lbPuntos.text = String(puntos)
-        lbCorrectas.text = String(correctas) + "/6"
+        lbCorrectas.text = String(correctas) + "/5"
         
         cambiaVistaFinal()
         
@@ -148,6 +194,38 @@ class SumaEjercicioBasicoViewController: UIViewController {
         if(respuesta1 == 1){
            puntos+=50
            correctas+=1
+            sonido1!.play()
+            if(totalPreguntas != 5){
+                let showAlert = UIAlertController(title: "Sigue asi!", message: nil, preferredStyle: .alert)
+                 let imageView = UIImageView(frame: CGRect(x: 15, y: 50, width: 240, height: 210))
+                imageView.image = UIImage(named: "correcto")
+                showAlert.view.addSubview(imageView)
+                let height = NSLayoutConstraint(item: showAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 320)
+                let width = NSLayoutConstraint(item: showAlert.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 250)
+                showAlert.view.addConstraint(height)
+                showAlert.view.addConstraint(width)
+                showAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                    // your actions here...
+                }))
+                self.present(showAlert, animated: true, completion: nil)
+            }
+        }
+        else{
+            if(totalPreguntas != 5){
+                let showAlert = UIAlertController(title: "Sigue asi!", message: nil, preferredStyle: .alert)
+                 let imageView = UIImageView(frame: CGRect(x: 15, y: 50, width: 240, height: 210))
+                imageView.image = UIImage(named: "incorrecto")
+                showAlert.view.addSubview(imageView)
+                let height = NSLayoutConstraint(item: showAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 320)
+                let width = NSLayoutConstraint(item: showAlert.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 250)
+                showAlert.view.addConstraint(height)
+                showAlert.view.addConstraint(width)
+                showAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                    // your actions here...
+                }))
+                self.present(showAlert, animated: true, completion: nil)
+            }
+            sonido2!.play()
         }
         random()
         totalPreguntas+=1
@@ -158,6 +236,38 @@ class SumaEjercicioBasicoViewController: UIViewController {
         if(respuesta1 == 2){
             puntos+=50
             correctas+=1
+            sonido1!.play()
+            if(totalPreguntas != 5){
+                let showAlert = UIAlertController(title: "Sigue asi!", message: nil, preferredStyle: .alert)
+                 let imageView = UIImageView(frame: CGRect(x: 15, y: 50, width: 240, height: 210))
+                imageView.image = UIImage(named: "correcto")
+                showAlert.view.addSubview(imageView)
+                let height = NSLayoutConstraint(item: showAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 320)
+                let width = NSLayoutConstraint(item: showAlert.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 250)
+                showAlert.view.addConstraint(height)
+                showAlert.view.addConstraint(width)
+                showAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                    // your actions here...
+                }))
+                self.present(showAlert, animated: true, completion: nil)
+            }
+        }
+        else{
+            if(totalPreguntas != 5){
+                let showAlert = UIAlertController(title: "Sigue asi!", message: nil, preferredStyle: .alert)
+                  let imageView = UIImageView(frame: CGRect(x: 15, y: 50, width: 240, height: 210))
+                imageView.image = UIImage(named: "incorrecto")
+                showAlert.view.addSubview(imageView)
+                let height = NSLayoutConstraint(item: showAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 320)
+                let width = NSLayoutConstraint(item: showAlert.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 250)
+                showAlert.view.addConstraint(height)
+                showAlert.view.addConstraint(width)
+                showAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                    // your actions here...
+                }))
+                self.present(showAlert, animated: true, completion: nil)
+            }
+            sonido2!.play()
         }
         random()
         totalPreguntas+=1
@@ -170,6 +280,38 @@ class SumaEjercicioBasicoViewController: UIViewController {
         if(respuesta1 == 3){
            puntos+=50
             correctas+=1
+            sonido1!.play()
+            if(totalPreguntas != 5){
+                let showAlert = UIAlertController(title: "Sigue asi!", message: nil, preferredStyle: .alert)
+                 let imageView = UIImageView(frame: CGRect(x: 15, y: 50, width: 240, height: 210))
+                imageView.image = UIImage(named: "correcto")
+                showAlert.view.addSubview(imageView)
+                let height = NSLayoutConstraint(item: showAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 320)
+                let width = NSLayoutConstraint(item: showAlert.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 250)
+                showAlert.view.addConstraint(height)
+                showAlert.view.addConstraint(width)
+                showAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                    // your actions here...
+                }))
+                self.present(showAlert, animated: true, completion: nil)
+            }
+        }
+        else{
+            if(totalPreguntas != 5){
+                let showAlert = UIAlertController(title: "Sigue asi!", message: nil, preferredStyle: .alert)
+                 let imageView = UIImageView(frame: CGRect(x: 15, y: 50, width: 240, height: 210))
+                imageView.image = UIImage(named: "incorrecto")
+                showAlert.view.addSubview(imageView)
+                let height = NSLayoutConstraint(item: showAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 320)
+                let width = NSLayoutConstraint(item: showAlert.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 250)
+                showAlert.view.addConstraint(height)
+                showAlert.view.addConstraint(width)
+                showAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                    // your actions here...
+                }))
+                self.present(showAlert, animated: true, completion: nil)
+            }
+            sonido2!.play()
         }
         random()
         totalPreguntas+=1
@@ -180,6 +322,38 @@ class SumaEjercicioBasicoViewController: UIViewController {
         if(respuesta1 == 4){
             puntos+=50
             correctas+=1
+            sonido1!.play()
+            if(totalPreguntas != 5){
+                let showAlert = UIAlertController(title: "Sigue asi!", message: nil, preferredStyle: .alert)
+                let imageView = UIImageView(frame: CGRect(x: 15, y: 50, width: 240, height: 210))
+                imageView.image = UIImage(named: "correcto")
+                showAlert.view.addSubview(imageView)
+                let height = NSLayoutConstraint(item: showAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 320)
+                let width = NSLayoutConstraint(item: showAlert.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 250)
+                showAlert.view.addConstraint(height)
+                showAlert.view.addConstraint(width)
+                showAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                    // your actions here...
+                }))
+                self.present(showAlert, animated: true, completion: nil)
+            }
+        }
+        else{
+            if(totalPreguntas != 5){
+                let showAlert = UIAlertController(title: "Sigue asi!", message: nil, preferredStyle: .alert)
+                let imageView = UIImageView(frame: CGRect(x: 15, y: 50, width: 240, height: 210))
+                imageView.image = UIImage(named: "incorrecto")
+                showAlert.view.addSubview(imageView)
+                let height = NSLayoutConstraint(item: showAlert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 320)
+                let width = NSLayoutConstraint(item: showAlert.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 250)
+                showAlert.view.addConstraint(height)
+                showAlert.view.addConstraint(width)
+                showAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                    // your actions here...
+                }))
+                self.present(showAlert, animated: true, completion: nil)
+            }
+            sonido2!.play()
         }
         random()
         totalPreguntas+=1
@@ -207,6 +381,8 @@ class SumaEjercicioBasicoViewController: UIViewController {
         var vc = segue.destination as! FindelJuegoViewController
         vc.puntuacion = self.puntos
         vc.preguntasCorrectas = self.correctas
+        vc.datosJuegos2 = false
+        vc.datosJuegos1 = true
         
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
