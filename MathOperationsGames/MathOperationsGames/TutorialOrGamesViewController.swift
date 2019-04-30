@@ -51,11 +51,7 @@ class TutorialOrGamesViewController: UIViewController {
         else{
             var vistaPlay = segue.destination as! GameViewController
             
-            vistaPlay.operacion = self .auxOperacion
-            
-           
-        
-            
+            vistaPlay.currentOperacion = currentOperacion
         }
         
         // Get the new view controller using segue.destination.
