@@ -13,6 +13,12 @@ class SumaEjercicioBasicoViewController: UIViewController {
 
     @IBOutlet weak var lbOp1: UILabel!
     @IBOutlet weak var lbOp2: UILabel!
+    @IBOutlet weak var lbSign: UILabel!
+    
+    @IBOutlet weak var lbOp1Div: UILabel!
+    @IBOutlet weak var lbSign1Div: UILabel!
+    @IBOutlet weak var lbSign2Div: UILabel!
+    @IBOutlet weak var lbOp2Div: UILabel!
     
     var opA: Int!
     var opB: Int!
@@ -51,7 +57,7 @@ class SumaEjercicioBasicoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         opActual = currentOperation.operationName
-        randBackground = Int.random(in: 1...3)
+        randBackground = Int.random(in: 1...5)
         totalPreguntas = 1
         puntos = 0
         correctas = 0
@@ -68,14 +74,20 @@ class SumaEjercicioBasicoViewController: UIViewController {
         
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
             if(randBackground == 1){
-        backgroundImage.image = UIImage(named: "pasto")
+                self.view.backgroundColor = #colorLiteral(red: 0.8446564078, green: 0.5145705342, blue: 1, alpha: 1)
             }
             else if(randBackground == 2){
-               backgroundImage.image = UIImage(named: "escuela")
+              self.view.backgroundColor = #colorLiteral(red: 0, green: 0.9810667634, blue: 0.5736914277, alpha: 1)
             }
             else if(randBackground == 3){
-                   backgroundImage.image = UIImage(named: "pizarron")
+                  self.view.backgroundColor = #colorLiteral(red: 0.9995340705, green: 0.988355577, blue: 0.4726552367, alpha: 1)
             }
+            else if(randBackground == 4){
+                self.view.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
+        }
+            else if(randBackground == 5){
+                self.view.backgroundColor = #colorLiteral(red: 0.5808190107, green: 0.0884276256, blue: 0.3186392188, alpha: 1)
+        }
         backgroundImage.contentMode =  UIView.ContentMode.scaleAspectFill
     self.view.insertSubview(backgroundImage, at: 0)
         
@@ -85,6 +97,8 @@ class SumaEjercicioBasicoViewController: UIViewController {
     
     
     func random (){
+        randBackground = Int.random(in: 1...5)
+        imgFondo()
         var aux:Int!
         if(opActual == "Multiplicaciones"){
             
@@ -99,7 +113,7 @@ class SumaEjercicioBasicoViewController: UIViewController {
         }
         else if(opActual == "Divisiones") {
             
-            opA = Int.random(in: 1...10)
+            opA = Int.random(in: 1...40)
             opB = Int.random(in: 1...10)
         
             
@@ -122,14 +136,48 @@ class SumaEjercicioBasicoViewController: UIViewController {
             
             
         }
+        if(opActual != "Divisiones"){
+            lbOp1Div.isHidden = true
+            lbSign1Div.isHidden = true
+            lbSign2Div.isHidden = true
+            lbOp2Div.isHidden = true
+            
+            lbSign.isHidden = false
+            lbOp1.isHidden = false
+            lbOp2.isHidden = false
+            
         if(opB < 10){
             lbOp1.text = String(opA)
             lbOp2.text = "  " + String(opB)
         }
+        else if(opA < 10){
+                lbOp1.text = String(opA)
+                lbOp2.text = "  " + String(opA)
+            }
         else{
             lbOp1.text = String(opA)
             lbOp2.text = String(opB)
+            }
+            
         }
+        else{
+            lbOp1Div.isHidden = false
+            lbSign1Div.isHidden = false
+            lbSign2Div.isHidden = false
+            lbOp2Div.isHidden = false
+            
+            lbOp1.isHidden = true
+            lbOp2.isHidden = true
+            lbSign.isHidden = true
+            
+            lbOp2Div.text = String(opA)
+            lbOp1Div.text = String(opB)
+            
+            
+            
+            
+        }
+        
 
         
         var respuesta : Int!
@@ -152,7 +200,7 @@ class SumaEjercicioBasicoViewController: UIViewController {
             respuesta = opA * opB
         }
         else if(opActual == "Divisiones"){
-            lbSigno.text = "/"
+            lbSigno.text = ""
             respuesta = opA / opB
         }
        
@@ -216,7 +264,7 @@ class SumaEjercicioBasicoViewController: UIViewController {
         }
         else{
             if(totalPreguntas != 5){
-                let showAlert = UIAlertController(title: "Sigue asi!", message: nil, preferredStyle: .alert)
+                let showAlert = UIAlertController(title: "No te rindas!", message: nil, preferredStyle: .alert)
                  let imageView = UIImageView(frame: CGRect(x: 15, y: 50, width: 240, height: 210))
                 imageView.image = UIImage(named: "incorrecto")
                 showAlert.view.addSubview(imageView)
@@ -258,7 +306,7 @@ class SumaEjercicioBasicoViewController: UIViewController {
         }
         else{
             if(totalPreguntas != 5){
-                let showAlert = UIAlertController(title: "Sigue asi!", message: nil, preferredStyle: .alert)
+                let showAlert = UIAlertController(title: "No te rindas!", message: nil, preferredStyle: .alert)
                   let imageView = UIImageView(frame: CGRect(x: 15, y: 50, width: 240, height: 210))
                 imageView.image = UIImage(named: "incorrecto")
                 showAlert.view.addSubview(imageView)
@@ -302,7 +350,7 @@ class SumaEjercicioBasicoViewController: UIViewController {
         }
         else{
             if(totalPreguntas != 5){
-                let showAlert = UIAlertController(title: "Sigue asi!", message: nil, preferredStyle: .alert)
+                let showAlert = UIAlertController(title: "No te rindas!", message: nil, preferredStyle: .alert)
                  let imageView = UIImageView(frame: CGRect(x: 15, y: 50, width: 240, height: 210))
                 imageView.image = UIImage(named: "incorrecto")
                 showAlert.view.addSubview(imageView)
@@ -344,7 +392,7 @@ class SumaEjercicioBasicoViewController: UIViewController {
         }
         else{
             if(totalPreguntas != 5){
-                let showAlert = UIAlertController(title: "Sigue asi!", message: nil, preferredStyle: .alert)
+                let showAlert = UIAlertController(title: "No te rindas!", message: nil, preferredStyle: .alert)
                 let imageView = UIImageView(frame: CGRect(x: 15, y: 50, width: 240, height: 210))
                 imageView.image = UIImage(named: "incorrecto")
                 showAlert.view.addSubview(imageView)

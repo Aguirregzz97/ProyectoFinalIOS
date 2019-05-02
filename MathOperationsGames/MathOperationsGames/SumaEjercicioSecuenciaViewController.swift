@@ -56,16 +56,19 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         opActual = currentOperation.operationName
-        randBackground = Int.random(in: 1...3)
+        randBackground = Int.random(in: 1...5)
         respFalsa1 = 0
         respFalsa2 = 0
         respFalsa3 = 0
         vidas = 5
         if(opActual == "Multiplicaciones"){
-            time = 11
+            time = 31
+        }
+        else if(opActual == "Divisiones"){
+            time = 31
         }
         else{
-            time = 6
+            time = 11
         }
            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(SumaEjercicioSecuenciaViewController.action), userInfo: nil, repeats: true)
         puntos = 0
@@ -78,6 +81,8 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
     
     func asignaValor(){
         
+        randBackground = Int.random(in: 1...5)
+        imgFondo()
         
         var respuesta: Int!
         
@@ -92,11 +97,23 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
         
         
         secuencia = Int.random(in: 1...4)
-        op1 = Int.random(in: 1...5)
+        
+        
         
         respuesta1 = Int.random(in: 1...4)
         
-        
+        if(opActual == "Divisiones"){
+            op1 = Int.random(in: 2...20)
+        }
+        else if (opActual == "Restas"){
+            op1 = Int.random(in: 20...40)
+        }
+        else if (opActual == "Multiplicaciones"){
+            op1 = Int.random(in: 1...10)
+        }
+        else{
+            op1 = Int.random(in: 1...35)
+        }
         
         
      
@@ -144,7 +161,6 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
                 op4 = op3 + 1
             }
             else if(opActual == "Restas"){
-                op1 = Int.random(in: 10...40)
                 op2 = op1 - 3
                 op3 = op2 - 3
                 op4 = op3 - 3
@@ -156,9 +172,9 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
             }
                 
             else if(opActual == "Divisiones"){
-                op2 = op1 / 3
-                op3 = op2 / 3
-                op4 = op3 / 3
+                op2 = op1 / 2
+                op3 = op2 / 2
+                op4 = op3 / 2
             }
          
          lbOpcion1.text = String(op1)
@@ -180,21 +196,20 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
                 op4 = op3 + 3
             }
             else if(opActual == "Restas"){
-                op1 = Int.random(in: 20...40)
                 op2 = op1 - 5
                 op3 = op2 - 5
                 op4 = op3 - 5
             }
             else if(opActual == "Multiplicaciones"){
-                op2 = op1 * 5
-                op3 = op2 * 5
-                op4 = op3 * 5
+                op2 = op1 * 3
+                op3 = op2 * 3
+                op4 = op3 * 3
             }
                 
             else if(opActual == "Divisiones"){
-                op2 = op1 / 6
-                op3 = op2 / 6
-                op4 = op3 / 6
+                op2 = op1 / 2
+                op3 = op2 / 2
+                op4 = op3 / 2
             }
 
          
@@ -215,21 +230,20 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
                 op4 = op3 + 4
             }
             else if(opActual == "Restas"){
-                op1 = Int.random(in: 20...40)
                 op2 = op1 - 6
                 op3 = op2 - 6
                 op4 = op3 - 6
             }
             else if(opActual == "Multiplicaciones"){
-                op2 = op1 * 4
-                op3 = op2 * 4
-                op4 = op3 * 4
+                op2 = op1 * 2
+                op3 = op2 * 2
+                op4 = op3 * 2
             }
                 
             else if(opActual == "Divisiones"){
-                op2 = op1 / 1
-                op3 = op2 / 1
-                op4 = op3 / 1
+                op2 = op1 / 2
+                op3 = op2 / 2
+                op4 = op3 / 2
             }
 
             
@@ -243,10 +257,28 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
             respuesta = op1
             print(respuesta)
         }
+        if(opActual == "Divisiones"){
+            respFalsa1 = respuesta - 3
+            respFalsa2 = respuesta + 2
+            respFalsa3 = respuesta + 5
+        }
+        else{
+            respFalsa1 = respuesta - 1
+            respFalsa2 = respuesta + 1
+            respFalsa3 = respuesta + 2
+        }
         
-        respFalsa1 = respuesta - 1
-        respFalsa2 = respuesta + 1
-        respFalsa3 = respuesta + 2
+        if(respFalsa1 < 0){
+            respFalsa1 = respFalsa1 + 2
+        }
+        else if(respFalsa2 < 0){
+            respFalsa2 = respFalsa2 + 3
+        }
+        else if(respFalsa3 < 0){
+            respFalsa3 = respFalsa3 + 4
+        }
+        
+        
         
         if(respuesta1 == 1 ){
             btRespuesta1.setTitle(String(respuesta), for: .normal)
@@ -286,27 +318,38 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
         
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         if(randBackground == 1){
-            backgroundImage.image = UIImage(named: "pasto")
+            self.view.backgroundColor = #colorLiteral(red: 0.8446564078, green: 0.5145705342, blue: 1, alpha: 1)
         }
         else if(randBackground == 2){
-            backgroundImage.image = UIImage(named: "escuela")
+            self.view.backgroundColor = #colorLiteral(red: 0, green: 0.9810667634, blue: 0.5736914277, alpha: 1)
         }
         else if(randBackground == 3){
-            backgroundImage.image = UIImage(named: "pizarron")
+            self.view.backgroundColor = #colorLiteral(red: 0.9995340705, green: 0.988355577, blue: 0.4726552367, alpha: 1)
+        }
+        else if(randBackground == 4){
+            self.view.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
+        }
+        else if(randBackground == 5){
+            self.view.backgroundColor = #colorLiteral(red: 0.5808190107, green: 0.0884276256, blue: 0.3186392188, alpha: 1)
         }
         backgroundImage.contentMode =  UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
-        
-        
     }
     
     @objc func action(){
-        
-      
-        
+
         if(opActual == "Multiplicaciones"){
             if(time <= 1){
-                time = 11
+                time = 31
+                vidas-=1
+                asignaValor()
+                sonido2!.play()
+                
+            }
+        }
+        else if (opActual == "Divisiones"){
+            if(time <= 1){
+                time = 31
                 vidas-=1
                 asignaValor()
                 sonido2!.play()
@@ -315,7 +358,7 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
         }
         else{
             if(time <= 1){
-                time = 6
+                time = 11
                 vidas-=1
                 asignaValor()
                 sonido2!.play()
@@ -332,14 +375,30 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
        
         if(opActual == "Multiplicaciones"){
             if(respuesta1 == 1){
-                time = 11
+                time = 31
                 puntos+=50
                 sonido1!.play()
                 
             }
             else{
                 sonido2!.play()
-                time = 11
+                time = 31
+                vidas-=1
+            }
+            asignaValor()
+            
+            
+        }
+        else if(opActual == "Divisiones"){
+            if(respuesta1 == 1){
+                time = 31
+                puntos+=50
+                sonido1!.play()
+                
+            }
+            else{
+                sonido2!.play()
+                time = 31
                 vidas-=1
             }
             asignaValor()
@@ -348,22 +407,18 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
         }
         else{
             if(respuesta1 == 1){
-                time = 6
+                time = 11
                 puntos+=50
                 sonido1!.play()
                 
             }
             else{
                 sonido2!.play()
-                time = 6
+                time = 11
                 vidas-=1
             }
             asignaValor()
         }
-        
-  
-        
-        
         
     }
     
@@ -372,30 +427,42 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
        
         if(opActual == "Multiplicaciones"){
             if(respuesta1 == 2){
-                time = 11
+                time = 31
                 puntos+=50
                 sonido1!.play()
                 
             }
             else{
                 sonido2!.play()
-                time = 11
+                time = 31
                 vidas-=1
             }
             asignaValor()
-            
-            
         }
-        else{
+        else if(opActual == "Divisiones"){
             if(respuesta1 == 2){
-                time = 5
+                time = 31
                 puntos+=50
                 sonido1!.play()
                 
             }
             else{
                 sonido2!.play()
-                time = 5
+                time = 31
+                vidas-=1
+            }
+            asignaValor()
+        }
+        else{
+            if(respuesta1 == 2){
+                time = 11
+                puntos+=50
+                sonido1!.play()
+                
+            }
+            else{
+                sonido2!.play()
+                time = 11
                 vidas-=1
             }
             asignaValor()
@@ -410,30 +477,44 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
        
         if(opActual == "Multiplicaciones"){
             if(respuesta1 == 3){
-                time = 11
+                time = 31
                 puntos+=50
                 sonido1!.play()
                 
             }
             else{
                 sonido2!.play()
-                time = 11
+                time = 31
                 vidas-=1
             }
             asignaValor()
             
             
         }
-        else{
+        else if(opActual == "Divisiones"){
             if(respuesta1 == 3){
-                time = 6
+                time = 31
                 puntos+=50
                 sonido1!.play()
                 
             }
             else{
                 sonido2!.play()
-                time = 6
+                time = 31
+                vidas-=1
+            }
+            asignaValor()
+        }
+        else{
+            if(respuesta1 == 3){
+                time = 11
+                puntos+=50
+                sonido1!.play()
+                
+            }
+            else{
+                sonido2!.play()
+                time = 11
                 vidas-=1
             }
             asignaValor()
@@ -446,14 +527,30 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
         
         if(opActual == "Multiplicaciones"){
             if(respuesta1 == 4){
-                time = 11
+                time = 31
                 puntos+=50
                 sonido1!.play()
                 
             }
             else{
                 sonido2!.play()
-                time = 11
+                time = 31
+                vidas-=1
+            }
+            asignaValor()
+            
+            
+        }
+        else if(opActual == "Divisiones"){
+            if(respuesta1 == 4){
+                time = 31
+                puntos+=50
+                sonido1!.play()
+                
+            }
+            else{
+                sonido2!.play()
+                time = 31
                 vidas-=1
             }
             asignaValor()
@@ -462,14 +559,14 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
         }
         else{
             if(respuesta1 == 4){
-                time = 6
+                time = 11
                 puntos+=50
                 sonido1!.play()
                 
             }
             else{
                 sonido2!.play()
-                time = 6
+                time = 11
                 vidas-=1
             }
             asignaValor()
