@@ -18,6 +18,12 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "hoja")?.draw(in: self.view.bounds)
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        self.view.backgroundColor = UIColor(patternImage: image)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -33,6 +39,7 @@ class GameViewController: UIViewController {
         }
         else if segue.identifier == "sumaOrdenaEjercicio"{
             var vistaTipoEjercicio = segue.destination as! SumaEjercicioOrdenaViewController
+            print("sexo")
             vistaTipoEjercicio.currentOperacion = currentOperacion
         }
         

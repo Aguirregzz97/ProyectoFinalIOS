@@ -22,7 +22,12 @@ class FindelJuegoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "hoja")?.draw(in: self.view.bounds)
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        self.view.backgroundColor = UIColor(patternImage: image)
        
      
         if(datosJuegos1){

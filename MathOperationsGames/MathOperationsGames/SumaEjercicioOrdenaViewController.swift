@@ -48,9 +48,12 @@ class SumaEjercicioOrdenaViewController: UIViewController {
     var alertCorrect: UIAlertController!
     
     var alertIncorrect: UIAlertController!
+    
+     var randBackground: Int!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        randBackground = Int.random(in: 1...5)
         timePassedNum = 50
         totalPoints = 0
         arrBtns += [btn0, btn1, btn2, btn3, btn4]
@@ -60,6 +63,7 @@ class SumaEjercicioOrdenaViewController: UIViewController {
         timePassed = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timePassedF), userInfo: nil, repeats: true)
         directions = [1, 1, 1, 1, 1]
         speeds = [Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5)]
+        imgFondo()
         paintViewsInScreen()
         // Do any additional setup after loading the view.
     }
@@ -131,6 +135,28 @@ class SumaEjercicioOrdenaViewController: UIViewController {
                 moveView(btn, speeds[btn.tag] * directions[btn.tag])
             }
         }
+    }
+    
+    func imgFondo(){
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        if(randBackground == 1){
+            self.view.backgroundColor = #colorLiteral(red: 0.8446564078, green: 0.5145705342, blue: 1, alpha: 1)
+        }
+        else if(randBackground == 2){
+            self.view.backgroundColor = #colorLiteral(red: 0, green: 0.9810667634, blue: 0.5736914277, alpha: 1)
+        }
+        else if(randBackground == 3){
+            self.view.backgroundColor = #colorLiteral(red: 0.9995340705, green: 0.988355577, blue: 0.4726552367, alpha: 1)
+        }
+        else if(randBackground == 4){
+            self.view.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
+        }
+        else if(randBackground == 5){
+            self.view.backgroundColor = #colorLiteral(red: 0.5808190107, green: 0.0884276256, blue: 0.3186392188, alpha: 1)
+        }
+        backgroundImage.contentMode =  UIView.ContentMode.scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
     }
     
     func paintViewsInScreen() {
