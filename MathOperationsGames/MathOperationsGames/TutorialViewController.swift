@@ -31,6 +31,15 @@ class TutorialViewController: UIViewController, WKNavigationDelegate {
     }
     
 
+    @IBAction func swipeHandler(_ sender: UISwipeGestureRecognizer) {
+        if sender.state == .ended {
+            if let navController = self.navigationController {
+                navController.popViewController(animated: true)
+            }
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 

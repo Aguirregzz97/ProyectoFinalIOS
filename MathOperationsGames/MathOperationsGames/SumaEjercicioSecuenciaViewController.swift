@@ -77,6 +77,11 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
 
     }
     
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        timer.invalidate()
+    }
+    
 
     
     func asignaValor(){
@@ -367,7 +372,11 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
         }
           time-=1
         
-        lbTiempo.text = String(time)
+        if (time <= 0) {
+            lbTiempo.text = "0"
+        } else {
+            lbTiempo.text = String(time)
+        }
     }
     
     
@@ -583,30 +592,32 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
              let newViewController = storyBoard.instantiateViewController(withIdentifier: "FindelJuego") as! FindelJuegoViewController
              self.present(newViewController, animated: true, completion: nil)*/
             time = 0
-            performSegue(withIdentifier: "Final", sender: self)
             timer.invalidate()
-            
-            
-            
+            dispFinished()
         }
     }
     
+    func dispFinished() {
+        let delay = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(dispAlertPoints), userInfo: nil, repeats: false)
+    }
     
+    @objc func dispAlertPoints() {
+        let genericAlert = UIAlertController(title: "Puntos: " + String(puntos), message: "quiere regresar a juegos?", preferredStyle: .alert)
+        genericAlert.addAction(UIAlertAction(title: "Si", style: .default, handler: {
+            action in self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(genericAlert, animated: true)
+    }
     
     // MARK: - Navigation
 
+    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        
-        var vc = segue.destination as! FindelJuegoViewController
-        vc.puntuacion = self.puntos
-        vc.datosJuegos2 = true
-        vc.datosJuegos1 = false
-       
-    
     }
+ */
     
 
 }

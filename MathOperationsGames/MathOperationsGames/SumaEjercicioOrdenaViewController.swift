@@ -15,6 +15,7 @@ class SumaEjercicioOrdenaViewController: UIViewController {
     @IBOutlet weak var btn2: UIButton!
     @IBOutlet weak var btn3: UIButton!
     @IBOutlet weak var btn4: UIButton!
+    @IBOutlet weak var lbPoints: UILabel!
     
     var currentOperacion: Operations!
     
@@ -62,7 +63,7 @@ class SumaEjercicioOrdenaViewController: UIViewController {
         actTimer = Timer.scheduledTimer(timeInterval: 0.006, target: self, selector: #selector(act), userInfo: nil, repeats: true)
         timePassed = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timePassedF), userInfo: nil, repeats: true)
         directions = [1, 1, 1, 1, 1]
-        speeds = [Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5), Float.random(in: 1 ... 2.5)]
+        speeds = [Float.random(in: 0.5 ... 1.6), Float.random(in: 0.5 ... 1.6), Float.random(in: 0.5 ... 1.6), Float.random(in: 0.5 ... 1.6), Float.random(in: 0.5 ... 1.6)]
         imgFondo()
         paintViewsInScreen()
         // Do any additional setup after loading the view.
@@ -194,6 +195,7 @@ class SumaEjercicioOrdenaViewController: UIViewController {
         self.present(alertIncorrect, animated: true, completion: nil)
         alertCorrectTimer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(dismissAlert2), userInfo: nil, repeats: false)
         totalPoints -= 10
+        lbPoints.text = "Points: " + String(totalPoints)
     }
     
     func dispAlertCorrect() {
@@ -205,6 +207,7 @@ class SumaEjercicioOrdenaViewController: UIViewController {
         self.present(alertCorrect, animated: true, completion: nil)
         alertCorrectTimer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(dismissAlert), userInfo: nil, repeats: false)
         totalPoints += timePassedNum
+        lbPoints.text = "Points: " + String(totalPoints)
     }
     
     func dispFinished() {
@@ -212,7 +215,7 @@ class SumaEjercicioOrdenaViewController: UIViewController {
     }
     
     @objc func dispAlertPoints() {
-        let genericAlert = UIAlertController(title: "Points: " + String(totalPoints), message: "quiere regresar a juegos?", preferredStyle: .alert)
+        let genericAlert = UIAlertController(title: "Puntos: " + String(totalPoints), message: "quiere regresar a juegos?", preferredStyle: .alert)
         genericAlert.addAction(UIAlertAction(title: "Si", style: .default, handler: {
             action in self.navigationController?.popViewController(animated: true)
         }))
