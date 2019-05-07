@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathOperationsGames/SumaEjercicioOrdenaViewController.swift"
-            timestampString = "578865644.163288"
+            timestampString = "578936896.113312"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "paintViewsInScreen()"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathOperationsGames/SumaEjercicioOrdenaViewController.swift"
-            timestampString = "578865644.163354"
+            timestampString = "578936896.113759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "paintViewsInScreen()"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathOperationsGames/SumaEjercicioOrdenaViewController.swift"
-            timestampString = "578865644.1634049"
+            timestampString = "578936896.114046"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "moveView(_:_:)"
             landmarkType = "7">
          </BreakpointContent>

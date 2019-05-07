@@ -73,37 +73,97 @@ class SumaEjercicioOrdenaViewController: UIViewController {
         switch operation {
         case "Sumas":
             for i in 0 ... 4 {
-                let firstNum = Int.random(in: 1 ... 25)
-                let secondNum = Int.random(in: 1 ... 25)
+                var firstNum = Int.random(in: 1 ... 25)
+                var secondNum = Int.random(in: 1 ... 25)
                 arrBtns[i].setTitle(String(firstNum) + " + " + String(secondNum), for: .normal)
+                for j in (0...i).reversed() {
+                    if (j == 0) {
+                        break
+                    }
+                    var isSame = true
+                    while (isSame) {
+                        if (tmpResults[j - 1] == firstNum + secondNum) {
+                            firstNum = Int.random(in: 1 ... 25)
+                            secondNum = Int.random(in: 1 ... 25)
+                            arrBtns[i].setTitle(String(firstNum) + " + " + String(secondNum), for: .normal)
+                        } else {
+                            isSame = false
+                        }
+                    }
+                }
                 tmpResults.append((firstNum + secondNum))
             }
             tmpResultsSorted = tmpResults.sorted()
             break
         case "Restas":
             for i in 0 ... 4 {
-                let firstNum = Int.random(in: 1 ... 12)
-                let secondNum = Int.random(in: 13 ... 42)
+                var firstNum = Int.random(in: 1 ... 12)
+                var secondNum = Int.random(in: 13 ... 42)
                 arrBtns[i].setTitle(String(secondNum) + " - " + String(firstNum), for: .normal)
+                for j in (0...i).reversed() {
+                    if (j == 0) {
+                        break
+                    }
+                    var isSame = true
+                    while (isSame) {
+                        if (tmpResults[j - 1] == secondNum - firstNum) {
+                            firstNum = Int.random(in: 1 ... 12)
+                            secondNum = Int.random(in: 13 ... 42)
+                            arrBtns[i].setTitle(String(secondNum) + " - " + String(firstNum), for: .normal)
+                        } else {
+                            isSame = false
+                        }
+                    }
+                }
                 tmpResults.append((secondNum - firstNum))
             }
             tmpResultsSorted = tmpResults.sorted()
             break
         case "Multiplicaciones":
             for i in 0 ... 4 {
-                let firstNum = Int.random(in: 1 ... 10)
-                let secondNum = Int.random(in: 1 ... 10)
+                var firstNum = Int.random(in: 1 ... 10)
+                var secondNum = Int.random(in: 1 ... 10)
                 arrBtns[i].setTitle(String(firstNum) + " X " + String(secondNum), for: .normal)
+                for j in (0...i).reversed() {
+                    if (j == 0) {
+                        break
+                    }
+                    var isSame = true
+                    while (isSame) {
+                        if (tmpResults[j - 1] == firstNum * secondNum) {
+                            firstNum = Int.random(in: 1 ... 10)
+                            secondNum = Int.random(in: 1 ... 10)
+                            arrBtns[i].setTitle(String(firstNum) + " X " + String(secondNum), for: .normal)
+                        } else {
+                            isSame = false
+                        }
+                    }
+                }
                 tmpResults.append((firstNum * secondNum))
             }
             tmpResultsSorted = tmpResults.sorted()
             break
         case "Divisiones":
             for i in 0 ... 4 {
-                let firstNum = Int.random(in: 1 ... 10)
-                let secondNum = firstNum * Int.random(in: 1 ... 10)
+                var firstNum = Int.random(in: 1 ... 10)
+                var secondNum = firstNum * Int.random(in: 1 ... 10)
                 arrBtns[i].setTitle(String(secondNum) + " ÷ " + String(firstNum), for: .normal)
                 tmpResults.append((secondNum / firstNum))
+                for j in (0...i).reversed() {
+                    if (j == 0) {
+                        break
+                    }
+                    var isSame = true
+                    while (isSame) {
+                        if (tmpResults[j - 1] == secondNum / firstNum) {
+                            firstNum = Int.random(in: 1 ... 10)
+                            secondNum = firstNum * Int.random(in: 1 ... 10)
+                            arrBtns[i].setTitle(String(secondNum) + " ÷ " + String(firstNum), for: .normal)
+                        } else {
+                            isSame = false
+                        }
+                    }
+                }
             }
             tmpResultsSorted = tmpResults.sorted()
 
