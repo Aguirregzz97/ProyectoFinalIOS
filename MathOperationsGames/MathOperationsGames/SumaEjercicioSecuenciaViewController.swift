@@ -602,7 +602,7 @@ class SumaEjercicioSecuenciaViewController: UIViewController {
     }
     
     @objc func dispAlertPoints() {
-        let genericAlert = UIAlertController(title: "Puntos: " + String(puntos), message: "quiere regresar a juegos?", preferredStyle: .alert)
+        let genericAlert = UIAlertController(title: "Puntos: " + String(puntos), message: "¿Quiere regresar a juegos?", preferredStyle: .alert)
         genericAlert.addAction(UIAlertAction(title: "Si", style: .default, handler: {
             action in self.navigationController?.popViewController(animated: true)
         }))

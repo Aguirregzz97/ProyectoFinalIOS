@@ -411,7 +411,18 @@ class SumaEjercicioBasicoViewController: UIViewController {
         totalPreguntas+=1
         
     }
+    func dispFinished() {
+        let delay = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(dispAlertPoints), userInfo: nil, repeats: false)
+    }
     
+    @objc func dispAlertPoints() {
+        let genericAlert = UIAlertController(title: "Puntos: " + String(puntos), message: "¿Quiere regresar a juegos?", preferredStyle: .alert)
+        genericAlert.addAction(UIAlertAction(title: "Si", style: .default, handler: {
+            action in self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(genericAlert, animated: true)
+    }
+   /*
     func cambiaVistaFinal(){
         if(totalPreguntas == 5){
             /*
@@ -422,8 +433,31 @@ class SumaEjercicioBasicoViewController: UIViewController {
             
             
         }
+    }*/
+    func cambiaVistaFinal(){
+        if(totalPreguntas == 5){
+            lbOp1Div.isHidden = true
+            lbSign1Div.isHidden = true
+            lbSign2Div.isHidden = true
+            lbOp2Div.isHidden = true
+            lbOp1.isHidden = true
+            lbOp2.isHidden = true
+            lbSign.isHidden = true
+            lbSigno.isHidden = true
+            btOpcion1.isHidden = true
+            btOpcion2.isHidden = true
+            btOpcion3.isHidden = true
+            btOpcion4.isHidden = true
+            /*
+             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+             let newViewController = storyBoard.instantiateViewController(withIdentifier: "FindelJuego") as! FindelJuegoViewController
+             self.present(newViewController, animated: true, completion: nil)*/
+            
+            
+            dispFinished()
+        }
+
     }
-    
     
     // MARK: - Navigation
 
@@ -440,8 +474,9 @@ class SumaEjercicioBasicoViewController: UIViewController {
         // Pass the selected object to the new view controller.
        
     }
+}
     
     
     
 
-}
+
